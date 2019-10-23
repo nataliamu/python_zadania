@@ -1,27 +1,19 @@
 import random
-
-print("1. macierz")
 size = 8
-rows = {}
-for i in range(size):
-    rows[i] = []
-    for _ in range(size):
-        rows[i].append(random.randint(0,10))
-    print(str(rows[i]))
+X = [[random.randint(1,100) for a in range(size)] for a in range(size)]
+Y = [[random.randint(1,100) for b in range(size)] for b in range(size)]
+result = [[0 for x in range(size)] for y in range(size)]
+for i in range(len(X)):
+   # iterate through columns of Y
+   for j in range(len(Y[0])):
+       # iterate through rows of Y
+       for k in range(len(Y)):
+           result[i][j] += X[i][k] * Y[k][j]
 
-print("2. macierz")
-columns = {}
-for i in range(size):
-    columns[i] = []
-    for _ in range(size):
-        columns[i].append(random.randint(0,10))
-    print(str(columns[i]))
+print('pierwsza macierz:\n', X)
+print('\n')
+print('druga macierz:\n', Y)
+print('Wynik mnożenia:\n')
 
-
-print("Wynik: ")
-rows3 = {}
-for i in range(size):
-    rows3[i] = []
-    for j in range(size):
-        rows3[i].append(columns[i][j] + rows[i][j])
-    print(str(rows3[i]))
+for r in result:
+   print(r)
